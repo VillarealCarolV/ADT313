@@ -1,0 +1,22 @@
+/* Style for the show-password div */
+.show-password {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #007bff;
+    cursor: pointer;
+    text-decoration: underline;
+    user-select: none;
+  }
+  
+  /* Hover effect */
+  .show-password:hover {
+    color: #0056b3;
+  }
+  
+  /* Optional: Focus effect for accessibility */
+  .show-password:focus {
+    outline: none;
+    color: #003580;
+  }
+  
