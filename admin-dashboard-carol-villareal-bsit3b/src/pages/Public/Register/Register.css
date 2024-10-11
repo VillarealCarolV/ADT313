@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 .main-container {
   display: flex;
@@ -128,3 +129,27 @@ button:hover {
   border-radius: 5px;
   padding: 5px 10px;
 }
+=======
+/* Style for the show-password div */
+.show-password {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #007bff;
+    cursor: pointer;
+    text-decoration: underline;
+    user-select: none;
+  }
+  
+  /* Hover effect */
+  .show-password:hover {
+    color: #0056b3;
+  }
+  
+  /* Optional: Focus effect for accessibility */
+  .show-password:focus {
+    outline: none;
+    color: #003580;
+  }
+  
+>>>>>>> f407cd4eb0e060fd3568449314cf51adb0df15d1
