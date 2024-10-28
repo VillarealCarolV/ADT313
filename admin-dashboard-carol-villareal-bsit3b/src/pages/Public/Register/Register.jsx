@@ -1,4 +1,3 @@
-
 import { useState, useRef, useCallback, useEffect } from 'react';
 import './Register.css';
 import { useDebounce } from '../../../utils/hooks/useDebounce';
@@ -11,8 +10,10 @@ function Register() {
   const [contactnum, setContactNum] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [role, setRole] = useState('user'); // State for role
   const [isFieldsDirty, setIsFieldsDirty] = useState(false);
   const [showModal, setShowModal] = useState(false); 
+  const [errorMessage, setErrorMessage] = useState(''); // State for error message
 
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -28,6 +29,7 @@ function Register() {
   const handleOnChange = (event, type) => {
     setDebounceState(false);
     setIsFieldsDirty(true);
+    setErrorMessage(''); // Reset the error message when fields change
 
     switch (type) {
       case 'firstname':
@@ -48,6 +50,9 @@ function Register() {
       case 'password':
         setPassword(event.target.value);
         break;
+      case 'role':
+        setRole(event.target.value);
+        break;
       default:
         break;
     }
@@ -60,42 +65,43 @@ function Register() {
       firstName: firstname,
       middleName: middlename,
       lastName: lastname,
-      contactNo: contactnum   
+      contactNo: contactnum,
+      role, // This is already included
     };
-    
+  
+    console.log("Registration Data:", data); // Log the data to see if role is included
+  
     setStatus('loading');
-    console.log(data);
-
+  
     try {
-      const res = await axios.post('/user/register', data, {
+      const res = await axios.post('/admin/register', data, {
         headers: { 'Access-Control-Allow-Origin': '*' },
       });
-      console.log(res);
+      console.log("Response:", res); // Log the response from the server
       localStorage.setItem('accessToken', res.data.access_token);
-
-      
       setShowModal(true);
-
+  
+      // Reset the fields after submission
       setFirstname('');
       setMiddlename('');
       setLastname('');
       setContactNum('');
       setEmail('');
       setPassword('');
-
+      setRole('user'); // Reset role after submission
     } catch (error) {
-      console.error(error);
+      console.error("Registration Error:", error);
       setStatus('idle');
     } finally {
-      setStatus('idle'); 
+      setStatus('idle');
     }
   };
+  
 
   useEffect(() => {
     setDebounceState(true);
   }, [userInputDebounce]);
 
- 
   const closeModal = () => {
     setShowModal(false);
   };
@@ -106,6 +112,7 @@ function Register() {
         <h3>Register</h3>
         <form>
           <div className='form-container'>
+            {/* Existing form fields */}
             <div>
               <div className='form-group'>
                 <label>Firstname: </label>
@@ -196,6 +203,21 @@ function Register() {
               {isShowPassword ? 'Hide' : 'Show'} Password
             </div>
 
+            {/* New Role Selection */}
+            <div>
+              <div className='form-group'>
+                <label>Role:</label>
+                <select value={role} onChange={(e) => handleOnChange(e, 'role')}>
+                  <option value='user'>User</option>
+                  <option value='admin'>Admin</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Display error message */}
+            {errorMessage && <p className='error-message'>{errorMessage}</p>}
+
+            {/* Submit button */}
             <div className='submit-container'>
               <button
                 type='button'
@@ -204,7 +226,7 @@ function Register() {
                   if (status === 'loading') {
                     return;
                   }
-                  if (firstname && middlename && lastname && contactnum && email && password) {
+                  if (firstname && middlename && lastname && contactnum && email && password && role) {
                     handleRegister(); 
                   } else {
                     setIsFieldsDirty(true);
@@ -220,6 +242,7 @@ function Register() {
                 {status === 'idle' ? 'Register' : 'Loading...'}
               </button>
             </div>
+
             <div className='log-in-container'>
               <a href='/'>
                 <small>Already Have An Account? Log In</small>
@@ -246,6 +269,3 @@ function Register() {
 }
 
 export default Register;
-
-
-

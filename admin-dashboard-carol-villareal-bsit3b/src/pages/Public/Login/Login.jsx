@@ -43,12 +43,10 @@ function Login() {
       });
       console.log(res);
       localStorage.setItem('accessToken', res.data.access_token);
-      navigate('/main/dashboard');
+      navigate('/main/movies');
       setStatus('idle');
     } catch (e) {
-     
       setStatus('idle');
-      
     }
   };
 
@@ -69,7 +67,7 @@ function Login() {
                   type='text'
                   name='email'
                   ref={emailRef}
-                  value={email} 
+                  value={email}
                   onChange={(e) => handleOnChange(e, 'email')}
                 />
               </div>
@@ -84,7 +82,7 @@ function Login() {
                   type={isShowPassword ? 'text' : 'password'}
                   name='password'
                   ref={passwordRef}
-                  value={password} 
+                  value={password}
                   onChange={(e) => handleOnChange(e, 'password')}
                 />
               </div>
@@ -105,7 +103,7 @@ function Login() {
                     return;
                   }
                   if (email && password) {
-                    handleLogin(); 
+                    handleLogin();
                   } else {
                     setIsFieldsDirty(true);
                     if (email === '') {
