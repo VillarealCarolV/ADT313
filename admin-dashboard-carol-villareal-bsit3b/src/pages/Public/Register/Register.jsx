@@ -109,9 +109,21 @@ function Register() {
   return (
     <div className='Register'>
       <div className='main-container'>
-        <h3>Register</h3>
+      
         <form>
+          
           <div className='form-container'>
+              {/* New Role Selection */}
+              <div>
+              <div className='form-group-reg'>
+                <label className='role-reg'>Role:</label>
+                <select value={role} onChange={(e) => handleOnChange(e, 'role')}>
+                  <option value='user'>User</option>
+                  <option value='admin'>Admin</option>
+                </select>
+              </div>
+            </div>
+
             {/* Existing form fields */}
             <div>
               <div className='form-group'>
@@ -124,7 +136,7 @@ function Register() {
                 />
               </div>
               {debounceState && isFieldsDirty && firstname === '' && (
-                <span className='errors'>This field is required</span>
+                <span className='errors-reg'>This field is required</span>
               )}
             </div>
             <div>
@@ -138,7 +150,7 @@ function Register() {
                 />
               </div>
               {debounceState && isFieldsDirty && middlename === '' && (
-                <span className='errors'>This field is required</span>
+                <span className='errors-reg'>This field is required</span>
               )}
             </div>
             <div>
@@ -152,7 +164,7 @@ function Register() {
                 />
               </div>
               {debounceState && isFieldsDirty && lastname === '' && (
-                <span className='errors'>This field is required</span>
+                <span className='errors-reg'>This field is required</span>
               )}
             </div>
             <div>
@@ -166,7 +178,7 @@ function Register() {
                 />
               </div>
               {debounceState && isFieldsDirty && contactnum === '' && (
-                <span className='errors'>This field is required</span>
+                <span className='errors-reg'>This field is required</span>
               )}
             </div>
             <div>
@@ -181,7 +193,7 @@ function Register() {
                 />
               </div>
               {debounceState && isFieldsDirty && email === '' && (
-                <span className='errors'>This field is required</span>
+                <span className='errors-reg'>This field is required</span>
               )}
             </div>
             <div>
@@ -196,24 +208,14 @@ function Register() {
                 />
               </div>
               {debounceState && isFieldsDirty && password === '' && (
-                <span className='errors'>This field is required</span>
+                <span className='errors-reg'>This field is required</span>
               )}
             </div>
-            <div className='show-password' onClick={handleShowPassword}>
+            <div className='show-password-reg' onClick={handleShowPassword}>
               {isShowPassword ? 'Hide' : 'Show'} Password
             </div>
 
-            {/* New Role Selection */}
-            <div>
-              <div className='form-group'>
-                <label>Role:</label>
-                <select value={role} onChange={(e) => handleOnChange(e, 'role')}>
-                  <option value='user'>User</option>
-                  <option value='admin'>Admin</option>
-                </select>
-              </div>
-            </div>
-
+          
             {/* Display error message */}
             {errorMessage && <p className='error-message'>{errorMessage}</p>}
 

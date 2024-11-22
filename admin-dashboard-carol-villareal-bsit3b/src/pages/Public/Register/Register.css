@@ -17,20 +17,56 @@
   font-weight: bold; 
 }
 
+.form-group-reg{
+  
+  position: relative;
+    left: 170px;
+
+  transform: translate(-50%, -50%);
+}
+.form-group-reg select{
+ cursor: pointer;
+    background-color: #0563af;
+    color: white; 
+    padding: 7px;
+    width: 170px;
+    border: none;
+    font-size: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+ 
+}
+.form-group-reg::before{
+  content: "\f13a";
+  font-family: FontAwesome;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  font-size: 28px;
+  line-height: 45px;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
 
 .form-container {
   padding: 3rem 2.5rem;
   border: 1px solid #dde2e6;
-  border-radius: 8px;
-  background-color: #ffffff; 
+  background: linear-gradient(to right, #333333, #666666, #f2f2f2); /* Gradient background */
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 400px; 
+  max-width: 400px;
   width: 100%;
 }
+
 
 
 .form-container > div {
@@ -41,23 +77,30 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: 119%;
+  margin-left: -25px;
 }
 
+.role-reg{
+  margin-right: 11px;
+}
 .form-group label {
   width: 100px;
   margin-right: 10px;
   text-align: left;
   font-weight: 500; 
-  color: #333;
+  /* color: #333; */
+  margin-top: -28px;
 }
 
-
-.errors {
+.errors-reg{
   color: #e63946;
   font-size: 0.75rem;
-  margin-top: 4px;
+  margin-top: -23px;
+  position: absolute;
+  margin-left: 72px;
 }
+
 
 
 .submit-container {
@@ -88,15 +131,17 @@ button:hover {
 }
 
 
-.show-password {
+.show-password-reg {
+  margin-top: -20px;
   margin-bottom: 1rem;
   cursor: pointer;
   color: #007bff;
   font-size: 0.875rem;
   text-decoration: underline;
+
 }
 
-.show-password:hover {
+.show-password-reg:hover {
   color: #0056b3;
 }
 .modal {

@@ -1,54 +1,190 @@
+/* Main container styles for light and dark themes */
+.main-container{
+  background: linear-gradient(to bottom, #000000, #555555, #ffffff);
+  /* Starting with black, transitioning to gray, and ending with white */
+  height: 100vh; /* Make sure the background covers the full viewport */
+  margin: 0; /* Remove default margin */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff; /* Make text white for contrast on dark background */
+}
+.imgtitle img {
+  background: none; /* Remove any background */
+  display: block;   /* Ensures no extra space around the image */
+  width: 100%;      /* Resize to fit the container */
+  height: auto;     /* Maintain aspect ratio */
+  margin: 0;        /* Remove any default margin */
+  padding: 0;       /* Remove any padding if applied */
+}
+.imgtitle img {
+  width: 215px;
+  height: 62px;    /* Set desired height */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+}
+
+.imgtitle img{
+  position: absolute; /* Absolute position */
+  top: 10px; /* 10px from the top */
+  left: 10px; /* 10px from the left */
+  margin-bottom: 1px;
+}
+.main-container.light-mode {
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.main-container.dark-mode {
+  background-color: #333;
+  color: #f8f9fa;
+}
+
+/* Form container styles */
+.form-container.light-mode {
+  background-color: #ffffff;
+  border: 0px solid #ddd;
+  color: #212529;
+}
+
+.form-container.dark-mode {
+  background-color: #444;
+  border: 0px solid #666;
+  color: #f8f9fa;
+}
+
+/* Input fields for light and dark themes */
+.form-container input.light-mode {
+  background-color: #f8f9fa; /* Light gray background */
+  color: #212529; /* Dark text for good contrast */
+  border: 1px solid #ccc; /* Light border for soft contrast */
+  padding: -0.2rem 1.2rem; /* Padding to make input fields comfortable */
+  border-radius: 5px; /* Rounded corners to match form style */
+  font-size: 1rem; /* Font size for readability */
+  width: 100%; /* Makes input fields stretch across the container */
+  margin-bottom: 2rem; /* Adds space between input fields */
+  transition: all 0.3s ease; /* Smooth transition for focus effect */
+}
+
+.form-container input.light-mode:focus {
+  border-color: #666666; /* Darker border color when focused */
+  outline: none; /* Removes default focus outline */
+  background-color: #ffffff; /* White background when focused */
+}
+
+.form-container input.dark-mode {
+  background-color: #555;
+  color: #f8f9fa;
+  border: 1px solid #777;
+}
+
+/* Login button styles */
+.submit-container button.light-mode {
+  background: linear-gradient(to right, #333333, #666666, #f2f2f2); /* Matching gradient */
+  color: #fff; /* White text for contrast */
+  padding: 0.8rem 1.5rem; /* Adjust padding to your liking */
+  border: none;
+  border-radius: 5px; /* Rounded corners */
+  font-size: 1rem; /* Font size */
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+  width: 100%; /* Button width stretches to fit form */
+}
+
+.submit-container button.dark-mode {
+  background-color: #555;
+  color: #ffffff;
+  border: none;
+  width: 100%;
+}
+
+/* Error message color based on theme */
+.errors.light-mode {
+  color: red;
+}
+
+.errors.dark-mode {
+  color: #ff6b6b;
+}
+.errors{
+  font-size: 0.75rem;
+    
+    position: absolute;
+    margin-left: 86px;
+    color: #e63946;
+    font-size: 0.75rem;
+    margin-top: 36px;
+}
+
+
+/* Register link styling */
+.register-container a.light-mode {
+  color: #007bff;
+}
+
+.register-container a.dark-mode {
+  color: #bbb;
+}
+
+/* Toggle theme button styling */
+.toggle-theme-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.toggle-theme-button.light-mode {
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.toggle-theme-button.dark-mode {
+  background-color: #333;
+  color: #f8f9fa;
+}
+
+/* Adjusting form input box size and spacing */
+.form-group input {
+  width: 100%;
+  max-width: 350px;
+  height: 45px;
+  padding: -1.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  margin-bottom: 28px;
+}
+
+/* Aligning 'show password' below input */
+.show-password {
+  color: #007bff;
+  text-decoration: underline;
+  margin-top: -5px;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+.show-password:hover {
+  color: #0056b3;
+}
+label.light-mode {
+  color: #212529; /* Dark text for light theme */
+}
+
+label.dark-mode {
+  color: #f8f9fa; /* Light text for dark theme */
+}
+
+/* Center alignment for the form */
 .main-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-}
-h3 {
-  margin-right: -75px;
-}
-.error-message {
-  color: red;
-  font-size: 0.875rem;
-  margin-top: 10px; 
-}
-
-
-.form-container {
-  padding: 4rem 2rem;
-  border: 1px solid #ccc;
-  border-radius: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.form-container > div {
-  margin-bottom: 12px;
-}
-
-.form-group {
-  display: flex;
-}
-
-.form-group label {
-  width: 70px;
-  margin-right: 8px;
-  text-align: left;
-}
-.errors {
-  color: red;
-  font-size: 12px;
-}
-.submit-container {
-  margin-top: 12px;
-  text-align: center;
-}
-.register-container {
-  text-align: center;
-}
-.show-password {
-  margin-bottom: 1rem;
-  cursor: pointer;
+  position: relative; /* To support the absolute positioning of the button */
 }
