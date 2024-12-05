@@ -75,7 +75,7 @@ function Login() {
       {isLoading ? (
         <Loading />
       ) : (
-        <div className={`main-container ${theme}-mode`}>
+        <div className={`main-container-login ${theme}-mode`}>
           <button
             onClick={toggleTheme}
             className={`toggle-theme-button ${theme}-mode`}
@@ -92,12 +92,12 @@ function Login() {
           <div className={`form-container ${theme}-mode`}>
             <h3>Login</h3>
             <form>
-              <div className="form-group dark-mode">
+              <div className="form-group ">
                 <label className={theme}>E-mail:</label>
                 <input
                   type="text"
                   name="email"
-                  className={`${theme}-mode`}
+                  
                   ref={emailRef}
                   value={email}
                   onChange={(e) => handleOnChange(e, 'email')}
@@ -106,12 +106,12 @@ function Login() {
                   <span className={`errors ${theme}-mode`}>This field is required</span>
                 )}
               </div>
-              <div className="form-group dark-mode">
+              <div className="form-group ">
                 <label>Password:</label>
                 <input
                   type={isShowPassword ? 'text' : 'password'}
                   name="password"
-                  className={`${theme}-mode`}
+                  
                   ref={passwordRef}
                   value={password}
                   onChange={(e) => handleOnChange(e, 'password')}
@@ -139,7 +139,7 @@ function Login() {
                 </button>
               </div>
               <div className="register-container">
-                <a href="/register" className={`${theme}-mode`}>
+                <a href="/register" >
                   <small>Register</small>
                 </a>
               </div>

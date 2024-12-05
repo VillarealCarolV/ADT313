@@ -1,0 +1,79 @@
+.LeftbarMainContainer{
+    flex: 0.7;
+    background-color: #15171b;
+    height: 100vh;
+}
+
+.logo img{
+    width: 157px;
+    margin-top: -59px;
+    
+}
+.listname{
+    color: #e1d8d8;
+}
+li {
+    list-style: none;
+    display: flex;
+    margin-top: -10px;
+}
+.menu{
+    color: gray;
+    margin-left: 1rem;
+
+}
+.ProfileImage{
+    width: 2.5rem;
+    height: 2.5rem;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: 40px;
+}
+.UserName{
+    color: gray;
+    margin-left: 18px;
+    margin-top:3px;
+}
+.viewingtime{
+    color: white;
+    font-size: 10px;
+    margin-left: 22px;
+    margin-top:-10px ;
+    position: relative;
+}
+.btnProfile{
+    color: gray;
+    margin-left: 18px;
+    margin-top: 3px;
+    color: black;
+    padding: 6px;
+    border-radius: 10px;
+    border: none;
+    position: relative;
+} 
+.ProfileLine{
+    margin-left: 50px;
+
+}
+
+@media screen and (max-width:764px) {
+    .listname{
+        display: none;
+    }
+    .li{
+        
+        margin-top: 12px;
+    }
+    .ProfileLine{
+        display: none;
+    }
+    .LeftbarMainContainer{
+        flex: 0.2;
+        background-color: black;
+        height: 100vh;
+    }
+}
+.logoName{
+    font-size: 13px ;
+}
+

@@ -1,4 +1,4 @@
-.searched-movie {
+/* .searched-movie {
     max-height: 200px;
     overflow-y: auto;
   }
@@ -13,4 +13,62 @@
   
   .container {
     overflow: auto;
+  } */
+  .container {
+    display: flex;                 
+    justify-content: space-between; 
   }
+  
+  
+  .searched-movie {
+    max-height: 200px;           
+    overflow-y: auto;            
+    border: 1px solid #ddd;      
+    border-radius: 5px;          
+    padding: 10px;               
+    background-color: #fff;      
+    width: 300px;                
+    margin-left: 20px;           
+  }
+  
+  
+  .edit-container {
+    flex-grow: 1;                
+    margin-right: 20px;          
+  }
+  
+  
+  .search-container p:hover {
+    background-color: lightblue; 
+  }
+  
+  
+  .poster-image {
+    width: 150px;    
+    height: auto;    
+  }
+  .photo-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .photo-item {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .video-gallery iframe {
+    margin-bottom: 15px;
+  }
+  
+  .cast-list {
+    padding-left: 20px;
+  }
+  
+  .cast-list li {
+    margin: 5px 0;
+  }
+  
+  

@@ -4,7 +4,7 @@ function MovieCards({ movie: movie, onClick }) {
     <>
       <div className='card' onClick={onClick}>
         <img src={movie.posterPath} />
-        <span>{movie.title}</span>
+        <span className='itemtitle'>{movie.title}</span>
       </div>
     </>
   );

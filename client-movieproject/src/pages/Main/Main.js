@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import './Main.css';
+import Logo from "../../img/movielogo.png"
 
 function Main() {
   const accessToken = localStorage.getItem('accessToken');
@@ -22,6 +23,8 @@ function Main() {
     <div className='Main'>
       <div className='container'>
         <div className='navigation'>
+        <h2 className='logo' style={{marginBottom:"-80px"}}><img src={`${Logo}`}>
+        </img></h2>
           <ul>
             <li>
               <a onClick={() => navigate('/')}>Movies</a>

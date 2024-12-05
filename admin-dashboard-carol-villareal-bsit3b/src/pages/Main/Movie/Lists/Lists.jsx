@@ -8,54 +8,56 @@ const Lists = () => {
   const navigate = useNavigate();
   const [lists, setLists] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10; // Adjust as needed
+  const itemsPerPage = 10; // Items displayed per page
 
-  const getMovies = () => {
-    axios.get('/movies').then((response) => {
+  const getMovies = async () => {
+    try {
+      const response = await axios.get('/movies', {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
       setLists(response.data);
-    });
+    } catch (error) {
+      console.error('Error fetching movies:', error);
+    }
   };
 
   useEffect(() => {
     getMovies();
   }, []);
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     const isConfirm = window.confirm(
       'Are you sure that you want to delete this data?'
     );
     if (isConfirm) {
-      axios
-        .delete(`/movies/${id}`, {
+      try {
+        await axios.delete(`/movies/${id}`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
-        })
-        .then(() => {
-          // Filter out the deleted movie and update the list
-          setLists((prevLists) => {
-            const updatedLists = prevLists.filter((movie) => movie.id !== id);
-            const totalPages = Math.ceil(updatedLists.length / itemsPerPage);
+        });
+        setLists((prevLists) => {
+          const updatedLists = prevLists.filter((movie) => movie.id !== id);
+          const totalPages = Math.ceil(updatedLists.length / itemsPerPage);
 
-            // If the current page is empty, move to the previous page if possible
-            if (currentPage > totalPages) {
-              setCurrentPage(totalPages);
-            }
-
-            return updatedLists;
-          });
-        })
-        .catch((error) => console.error('Delete error:', error));
+          if (currentPage > totalPages) {
+            setCurrentPage(totalPages);
+          }
+          return updatedLists;
+        });
+      } catch (error) {
+        console.error('Error deleting movie:', error);
+      }
     }
   };
 
-  // Calculate displayed movies based on current page and items per page
   const displayedMovies = lists.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
 
-  // Handle pagination navigation
   const handleNextPage = () => {
     if (currentPage < Math.ceil(lists.length / itemsPerPage)) {
       setCurrentPage(currentPage + 1);
@@ -86,6 +88,9 @@ const Lists = () => {
             <tr>
               <th>ID</th>
               <th>Title</th>
+              <th>Genre</th>
+              <th>Release Date</th>
+              <th>Rating</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -94,6 +99,9 @@ const Lists = () => {
               <tr key={movie.id}>
                 <td>{movie.id}</td>
                 <td>{movie.title}</td>
+                <td>{movie.genre || 'N/A'}</td>
+                <td>{movie.releaseDate || 'N/A'}</td>
+                <td>{movie.rating || 'N/A'}</td>
                 <td>
                   <button
                     type='button'
@@ -120,7 +128,9 @@ const Lists = () => {
           >
             Previous
           </button>
-          <span>Page {currentPage}</span>
+          <span>
+            Page {currentPage} of {Math.ceil(lists.length / itemsPerPage)}
+          </span>
           <button
             onClick={handleNextPage}
             disabled={currentPage === Math.ceil(lists.length / itemsPerPage)}

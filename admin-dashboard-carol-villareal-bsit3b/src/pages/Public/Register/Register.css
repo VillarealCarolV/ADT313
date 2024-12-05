@@ -1,175 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-.main-container {
+body {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f7f9fc; 
+  background: linear-gradient(to bottom, #000000, #555555, #ffffff);
+}
+
+.Register .title-Reg {
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.Register {
+  width: 700px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   padding: 20px;
 }
 
-
-.error-message {
-  color: #e63946;
-  font-size: 0.875rem;
-  margin-top: 10px;
-  font-weight: bold; 
-}
-
-.form-group-reg{
-  
-  position: relative;
-    left: 170px;
-
-  transform: translate(-50%, -50%);
-}
-.form-group-reg select{
- cursor: pointer;
-    background-color: #0563af;
-    color: white; 
-    padding: 7px;
-    width: 170px;
-    border: none;
-    font-size: 15px;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-    -webkit-appearance: button;
-    appearance: button;
-    outline: none;
- 
-}
-.form-group-reg::before{
-  content: "\f13a";
-  font-family: FontAwesome;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 20%;
-  height: 100%;
-  text-align: center;
-  font-size: 28px;
-  line-height: 45px;
-  color: rgba(255, 255, 255, 0.5);
-  background-color: rgba(255, 255, 255, 0.1);
-  pointer-events: none;
-}
-
-.form-container {
-  padding: 3rem 2.5rem;
-  border: 1px solid #dde2e6;
-  background: linear-gradient(to right, #333333, #666666, #f2f2f2); /* Gradient background */
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  max-width: 400px;
+.Register input,
+.Register select,
+.Register button {
   width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
-
-
-.form-container > div {
-  margin-bottom: 16px; 
-}
-
-.form-group {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 119%;
-  margin-left: -25px;
-}
-
-.role-reg{
-  margin-right: 11px;
-}
-.form-group label {
-  width: 100px;
-  margin-right: 10px;
-  text-align: left;
-  font-weight: 500; 
-  /* color: #333; */
-  margin-top: -28px;
-}
-
-.errors-reg{
-  color: #e63946;
-  font-size: 0.75rem;
-  margin-top: -23px;
-  position: absolute;
-  margin-left: 72px;
-}
-
-
-
-.submit-container {
-  margin-top: 16px;
-  text-align: center;
-  width: 100%;
-}
-
-button {
-  padding: 0.75rem 1.5rem;
-  border: none;
+.Register button {
   background-color: #007bff;
   color: white;
-  font-size: 1rem;
-  border-radius: 4px;
+  font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  border: none;
 }
 
-button:hover {
+.Register button:hover {
   background-color: #0056b3;
 }
 
-
-.register-container {
-  text-align: center;
-  margin-top: 1rem;
+@media (max-width: 768px) {
+  .Register {
+    max-width: 90%;
+  }
 }
 
-
-.show-password-reg {
-  margin-top: -20px;
-  margin-bottom: 1rem;
-  cursor: pointer;
-  color: #007bff;
-  font-size: 0.875rem;
-  text-decoration: underline;
-
+.Register form .reg-form-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.show-password-reg:hover {
-  color: #0056b3;
-}
-.modal {
-  display: flex; 
-  justify-content: center;
-  align-items: center;
-  position: fixed; 
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); 
-  z-index: 1000; 
+.reg-form-container .form-group-reg {
+  width: calc(50% - 10px);
+  margin-bottom: 15px;
 }
 
-.modal-content {
-  background-color: white;
-  padding: 20px;
+.reg-form-container .form-group-reg input {
+  height: 45px;
+  width: 100%;
+}
+
+.reg-form-container .form-group-reg:first-child {
+  margin-right: auto;
+}
+
+.reg-form-container .form-group-reg:last-child {
+  margin-left: auto;
+}
+
+.form-group {
+  width: calc(50% - 10px);
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  height: 45px;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  text-align: center;
-}
-
-.close-button {
-  margin-top: 10px;
-  cursor: pointer;
-  background-color: #007bff; 
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
 }

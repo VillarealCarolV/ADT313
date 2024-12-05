@@ -16,6 +16,7 @@ function Login() {
   const [status, setStatus] = useState('idle');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState(''); // New state for error message
 
   const handleShowPassword = useCallback(() => {
     setIsShowPassword((value) => !value);
@@ -24,46 +25,28 @@ function Login() {
   const handleOnChange = (event, type) => {
     setDebounceState(false);
     setIsFieldsDirty(true);
-
-    switch (type) {
-      case 'email':
-        setEmail(event.target.value);
-
-        break;
-
-      case 'password':
-        setPassword(event.target.value);
-        break;
-
-      default:
-        break;
-    }
+    setErrorMessage(''); // Clear error message when user types
+    if (type === 'email') setEmail(event.target.value);
+    if (type === 'password') setPassword(event.target.value);
   };
 
   const handleLogin = async () => {
     const data = { email, password };
     setStatus('loading');
-
-    await axios({
-      method: 'post',
-      url: '/admin/login',
-      data,
-      headers: { 'Access-Control-Allow-Origin': '*' },
-    })
-      .then((res) => {
-        console.log(res);
-        //store response access token to localstorage
-        localStorage.setItem('accessToken', res.data.access_token);
-        navigate('/main/movies');
-        setStatus('idle');
-      })
-      .catch((e) => {
-        setError(e.response.data.message);
-        console.log(e);
-        setStatus('idle');
-        // alert(e.response.data.message);
+    setErrorMessage(''); // Clear previous error
+    try {
+      const res = await axios.post('http://localhost:3000/user/login', data, {
+        headers: { 'Access-Control-Allow-Origin': '*' },
       });
+      localStorage.setItem('accessToken', res.data.access_token);
+      navigate('/main/home');
+      setStatus('idle');
+    } catch (e) {
+      setErrorMessage('Incorrect email or password. Please try again.');
+      setStatus('idle');
+    }
   };
+
 
   useEffect(() => {
     setDebounceState(true);
@@ -84,6 +67,7 @@ function Login() {
                   type='text'
                   name='email'
                   ref={emailRef}
+                  value={email}
                   onChange={(e) => handleOnChange(e, 'email')}
                 />
               </div>
@@ -98,6 +82,7 @@ function Login() {
                   type={isShowPassword ? 'text' : 'password'}
                   name='password'
                   ref={passwordRef}
+                  value={password}
                   onChange={(e) => handleOnChange(e, 'password')}
                 />
               </div>
@@ -134,7 +119,7 @@ function Login() {
                 {status === 'idle' ? 'Login' : 'Loading'}
               </button>
             </div>
-            <div className='register-container'>
+            <div className='reg`ister-container'>
               <a href='/register'>
                 <small>Register</small>
               </a>
@@ -147,3 +132,6 @@ function Login() {
 }
 
 export default Login;
+
+//usermail@mail.com
+//userpass

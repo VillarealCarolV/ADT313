@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import './Home.css';
 import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import Leftbar from '../../../../components/Leftbar/Leftbar';
 import MovieCards from '../../../../components/MovieCards/MovieCards';
 import { useMovieContext } from '../../../../context/MovieContext';
 const Home = () => {
@@ -37,8 +38,11 @@ const Home = () => {
   }, [featuredMovie]);
 
   return (
-    <div className='main-container'>
-      <h1 className='page-title'>Movies</h1>
+    
+    <div className='main-container-home'>
+      <Leftbar />
+      {/* <h1 className='page-title'>Movies</h1> */}
+      
       {featuredMovie && movieList.length ? (
         <div className='featured-list-container'>
           <div
@@ -54,11 +58,8 @@ const Home = () => {
           >
             <span className='featured-movie-title'>{featuredMovie.title}</span>
           </div>
-        </div>
-      ) : (
-        <div className='featured-list-container-loader'></div>
-      )}
-      <div className='list-container'>
+         <div> <h4 className='submaintitle'>Continue  Playing</h4></div>
+          <div className='list-container'>
         {movieList.map((movie) => (
           <>
             <MovieCards
@@ -71,6 +72,14 @@ const Home = () => {
           </>
         ))}
       </div>
+        </div>
+      ) : (
+        <div className='featured-list-container-loader'></div>
+      )}
+
+
+      
+      
     </div>
   );
 };

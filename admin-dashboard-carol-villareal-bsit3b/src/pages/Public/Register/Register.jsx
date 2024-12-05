@@ -108,11 +108,12 @@ function Register() {
 
   return (
     <div className='Register'>
-      <div className='main-container'>
+      <div className='main-container-reg'>
       
         <form>
           
-          <div className='form-container'>
+          <div className='reg-form-container'>
+            <div className='title-Reg'>Register</div>
               {/* New Role Selection */}
               <div>
               <div className='form-group-reg'>
@@ -125,13 +126,13 @@ function Register() {
             </div>
 
             {/* Existing form fields */}
-            <div>
+            <div className='userdetails'>
               <div className='form-group'>
                 <label>Firstname: </label>
                 <input
                   type='text'
                   name='firstname'
-                  value={firstname} 
+                      value={firstname} 
                   onChange={(e) => handleOnChange(e, 'firstname')} 
                 />
               </div>
@@ -139,7 +140,7 @@ function Register() {
                 <span className='errors-reg'>This field is required</span>
               )}
             </div>
-            <div>
+            <div className='userdetails'>
               <div className='form-group'>
                 <label>Middle Name: </label>
                 <input
@@ -153,7 +154,7 @@ function Register() {
                 <span className='errors-reg'>This field is required</span>
               )}
             </div>
-            <div>
+            <div className='userdetails'>
               <div className='form-group'>
                 <label>Last Name: </label>
                 <input
@@ -167,7 +168,7 @@ function Register() {
                 <span className='errors-reg'>This field is required</span>
               )}
             </div>
-            <div>
+            <div className='userdetails'>
               <div className='form-group'>
                 <label>Contact Number: </label>
                 <input
@@ -181,7 +182,7 @@ function Register() {
                 <span className='errors-reg'>This field is required</span>
               )}
             </div>
-            <div>
+            <div className='userdetails'> 
               <div className='form-group'>
                 <label>E-mail:</label>
                 <input
@@ -196,7 +197,7 @@ function Register() {
                 <span className='errors-reg'>This field is required</span>
               )}
             </div>
-            <div>
+            <div className='userdetails'>
               <div className='form-group'>
                 <label>Password:</label>
                 <input

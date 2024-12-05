@@ -1,11 +1,19 @@
 .card {
-  max-width: 180px;
-  border: 20px solid #898989;
-  background-color: #898989;
+  width: 200px;
+  height: 240px;
+  background-color: #000000;
+  margin: 5px;
+  /* border-top-left-radius: 30px;
+  border-top-right-radius: 30px; */
 }
 .card img {
-  max-width: 180px;
-  object-fit: contain;
+  width: 200px;
+  height: 228px;
+  object-fit: cover;
+  /* border-top-left-radius: 30px;
+  border-top-right-radius: 30px; */
+  position: relative;
+  border: solid 1px rgb(80, 79, 79);
 }
 
 .card:hover {
