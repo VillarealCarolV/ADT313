@@ -127,7 +127,8 @@ function Register() {
 
             {/* Existing form fields */}
             <div className='userdetails'>
-              <div className='form-group'>
+              <div className='form-group-reg'>
+                <div className='input-field'>
                 <label>Firstname: </label>
                 <input
                   type='text'
@@ -135,28 +136,35 @@ function Register() {
                       value={firstname} 
                   onChange={(e) => handleOnChange(e, 'firstname')} 
                 />
+                </div>
+                
               </div>
               {debounceState && isFieldsDirty && firstname === '' && (
                 <span className='errors-reg'>This field is required</span>
               )}
             </div>
             <div className='userdetails'>
-              <div className='form-group'>
-                <label>Middle Name: </label>
+              <div className='form-group-reg'>
+                <div className='input-field'>
+
+                   <label>Middle Name: </label>
                 <input
                   type='text'
                   name='middlename'
                   value={middlename} 
                   onChange={(e) => handleOnChange(e, 'middlename')} 
                 />
+                </div>
+               
               </div>
               {debounceState && isFieldsDirty && middlename === '' && (
                 <span className='errors-reg'>This field is required</span>
               )}
             </div>
             <div className='userdetails'>
-              <div className='form-group'>
-                <label>Last Name: </label>
+              <div className='form-group-reg'>
+              <div className='input-field'>
+                 <label>Last Name: </label>
                 <input
                   type='text'
                   name='lastname'
@@ -164,13 +172,16 @@ function Register() {
                   onChange={(e) => handleOnChange(e, 'lastname')} 
                 />
               </div>
+               
+              </div>
               {debounceState && isFieldsDirty && lastname === '' && (
                 <span className='errors-reg'>This field is required</span>
               )}
             </div>
             <div className='userdetails'>
-              <div className='form-group'>
-                <label>Contact Number: </label>
+              <div className='form-group-reg'>
+              <div className='input-field'>
+                 <label>Contact Number: </label>
                 <input
                   type='text'
                   name='contactnum'
@@ -178,13 +189,16 @@ function Register() {
                   onChange={(e) => handleOnChange(e, 'contactnum')} 
                 />
               </div>
+               
+              </div>
               {debounceState && isFieldsDirty && contactnum === '' && (
                 <span className='errors-reg'>This field is required</span>
               )}
             </div>
             <div className='userdetails'> 
-              <div className='form-group'>
-                <label>E-mail:</label>
+              <div className='form-group-reg'>
+              <div className='input-field'>
+                 <label>E-mail:</label>
                 <input
                   type='text'
                   name='email'
@@ -193,12 +207,15 @@ function Register() {
                   onChange={(e) => handleOnChange(e, 'email')}
                 />
               </div>
+               
+              </div>
               {debounceState && isFieldsDirty && email === '' && (
                 <span className='errors-reg'>This field is required</span>
               )}
             </div>
             <div className='userdetails'>
-              <div className='form-group'>
+              <div className='form-group-reg'>
+              <div className='input-field'>
                 <label>Password:</label>
                 <input
                   type={isShowPassword ? 'text' : 'password'}
@@ -208,11 +225,13 @@ function Register() {
                   onChange={(e) => handleOnChange(e, 'password')}
                 />
               </div>
+                
+              </div>
               {debounceState && isFieldsDirty && password === '' && (
                 <span className='errors-reg'>This field is required</span>
               )}
             </div>
-            <div className='show-password-reg' onClick={handleShowPassword}>
+            <div className='show-password' onClick={handleShowPassword}>
               {isShowPassword ? 'Hide' : 'Show'} Password
             </div>
 
@@ -221,7 +240,7 @@ function Register() {
             {errorMessage && <p className='error-message'>{errorMessage}</p>}
 
             {/* Submit button */}
-            <div className='submit-container'>
+            <div className='reg-submit-container'>
               <button
                 type='button'
                 disabled={status === 'loading'}

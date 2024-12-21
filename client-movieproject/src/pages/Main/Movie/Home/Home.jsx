@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import './Home.css';
 import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import Leftbar from '../../../../components/Leftbar/Leftbar';
+// import Leftbar from '../../../../components/Leftbar/Leftbar';
 import MovieCards from '../../../../components/MovieCards/MovieCards';
 import { useMovieContext } from '../../../../context/MovieContext';
 const Home = () => {
@@ -17,6 +17,7 @@ const Home = () => {
       .get('/movies')
       .then((response) => {
         setMovieList(response.data);
+        
         const random = Math.floor(Math.random() * response.data.length);
         setFeaturedMovie(response.data[random]);
       })
@@ -40,7 +41,7 @@ const Home = () => {
   return (
     
     <div className='main-container-home'>
-      <Leftbar />
+      {/* <Leftbar /> */}
       {/* <h1 className='page-title'>Movies</h1> */}
       
       {featuredMovie && movieList.length ? (
@@ -53,19 +54,25 @@ const Home = () => {
                 'https://image.tmdb.org/t/p/original/undefined'
                   ? featuredMovie.backdropPath
                   : featuredMovie.posterPath
-              }) no-repeat center top`,
+              }) no-repeat center center / cover`,
             }}
           >
             <span className='featured-movie-title'>{featuredMovie.title}</span>
+            <p className='featured-movie-description'>{featuredMovie.overview}</p>
+            <div className="btns">
+              <button>WATCH TRAILER</button>
+              
+            </div>
           </div>
-         <div> <h4 className='submaintitle'>Continue  Playing</h4></div>
+         <div> <h4 className='submaintitle'>Popular Movies</h4></div>
           <div className='list-container'>
         {movieList.map((movie) => (
           <>
             <MovieCards
               movie={movie}
               onClick={() => {
-                navigate(`/view/${movie.id}`);
+                console.log(movie);
+                navigate(`/main/view/${movie.id}`);
                 setMovie(movie);
               }}
             />

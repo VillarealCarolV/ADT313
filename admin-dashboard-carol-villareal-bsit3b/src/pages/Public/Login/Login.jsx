@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDebounce } from '../../../utils/hooks/useDebounce';
 import axios from 'axios';
 import Loading from './LoadingComp/Loading';
-import imageTitle from '../img/movielogo.png';
+import imageTitle from '../img/logo-movie.png';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -90,7 +90,7 @@ function Login() {
             />
           </div>
           <div className={`form-container ${theme}-mode`}>
-            <h3>Login</h3>
+            <h3>ADMIN LOGIN</h3>
             <form>
               <div className="form-group ">
                 <label className={theme}>E-mail:</label>
@@ -103,7 +103,7 @@ function Login() {
                   onChange={(e) => handleOnChange(e, 'email')}
                 />
                 {debounceState && isFieldsDirty && email === '' && (
-                  <span className={`errors ${theme}-mode`}>This field is required</span>
+                  <span className={`errors `}>This field is required</span>
                 )}
               </div>
               <div className="form-group ">
@@ -117,11 +117,11 @@ function Login() {
                   onChange={(e) => handleOnChange(e, 'password')}
                 />
                 {debounceState && isFieldsDirty && password === '' && (
-                  <span className={`errors ${theme}-mode`}>This field is required</span>
+                  <span className={`errors `}>This field is required</span>
                 )}
               </div>
               {errorMessage && (
-                <div className={`error-message ${theme}-mode`}>
+                <div className={`error-message `}>
                   {errorMessage}
                 </div>
               )}

@@ -5,7 +5,6 @@ import axios from 'axios';
 
 function View() {
   const { movie, setMovie } = useMovieContext();
-
   const { movieId } = useParams();
   const navigate = useNavigate();
 
@@ -21,8 +20,8 @@ function View() {
           navigate('/');
         });
     }
-    return () => {};
   }, [movieId]);
+
   return (
     <>
       {movie && (
@@ -32,33 +31,65 @@ function View() {
               <h1>{movie.title}</h1>
             </div>
             <h3>{movie.overview}</h3>
-            {JSON.stringify(movie)}
+           
           </div>
 
-          {movie.casts && movie.casts.length && (
+          {movie.casts && movie.casts.length > 0 ? (
             <div>
               <h1>Cast & Crew</h1>
-              {JSON.stringify(movie.casts)}
+              <ul>
+                {movie.casts.map((cast, index) => (
+                  <li key={index}>{cast.name}</li>
+                ))}
+              </ul>
             </div>
+          ) : (
+            <p>No cast information available.</p>
           )}
 
-          {movie.videos && movie.videos.length && (
+          {movie.videos && movie.videos.length > 0 ? (
             <div>
               <h1>Videos</h1>
-              {JSON.stringify(movie.videos)}
+              <div>
+                {movie.videos.map((video, index) => (
+                  <iframe
+                    key={index}
+                    width="560"
+                    height="315"
+                    src={`https://www.youtube.com/embed/${video.key}`}
+                    title={video.name}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                ))}
+              </div>
             </div>
+          ) : (
+            <p>No videos available.</p>
           )}
 
-          {movie.photos && movie.photos.length && (
+          {movie.photos && movie.photos.length > 0 ? (
             <div>
               <h1>Photos</h1>
-              {JSON.stringify(movie.photos)}
+              <div style={{ display: 'flex', gap: '10px' }}>
+                {movie.photos.map((photo, index) => (
+                  <img
+                    key={index}
+                    src={photo.filePath}
+                    alt={`Photo ${index + 1}`}
+                    style={{ width: '200px', height: 'auto' }}
+                  />
+                ))}
+              </div>
             </div>
+          ) : (
+            <p>No photos available.</p>
           )}
         </>
       )}
     </>
   );
 }
-
 export default View;
+

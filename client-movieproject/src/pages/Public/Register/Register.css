@@ -26,4 +26,57 @@
     text-overflow: ellipsis; /* Optional: to show "..." for long messages */
     white-space: nowrap; /* Optional: to prevent wrapping */
   }
-  
+  form label{
+    display: flex;
+    margin-top: 20px;
+    font-size: 15px;
+  }
+  form input{
+    width: 100%;
+    padding: 7px;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    font-size: 16px;
+    color: #fff;
+  }
+  .submit-reg-container{
+    display: flex;
+    justify-content: center;
+  }
+  .submit-reg-container button{
+    width: 320px;
+    height: 35px;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #282c34;
+    font-weight: 700;
+    background: #fff;
+    border: none;
+  outline: none;
+  }
+  .log-in-container{
+    font-size: 14px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  .log-in-container a{
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .log-in-container a:hover{
+    text-decoration: underline;
+  }
+  .show-password-reg{
+    display: flex;
+    justify-content: end;
+    margin-top: 16px;
+    cursor: pointer;
+  }

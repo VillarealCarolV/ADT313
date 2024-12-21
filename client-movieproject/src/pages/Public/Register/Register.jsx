@@ -1,7 +1,9 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import './Register.css';
 import { useDebounce } from '../../../utils/hooks/useDebounce';
 import axios from 'axios';
+import logo from '../../../img/logo-movie.png';
 
 function Register() {
   const [firstname, setFirstname] = useState('');
@@ -13,7 +15,8 @@ function Register() {
   const [role, setRole] = useState('user'); // State for role
   const [isFieldsDirty, setIsFieldsDirty] = useState(false);
   const [showModal, setShowModal] = useState(false); 
-  const [errorMessage, setErrorMessage] = useState(''); // State for error message
+  const [errorMessage, setErrorMessage      ] = useState(''); // State for error message
+  const navigate = useNavigate();
 
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -79,7 +82,10 @@ function Register() {
       console.log("Response:", res); // Log the response from the server
   
       // Show modal on successful registration
-      setShowModal(true);
+      setShowModal(true);setTimeout(() => {
+        navigate('/');
+      }, 2000);
+      
     } catch (error) {
       console.error("Registration Error:", error);
   
@@ -115,6 +121,9 @@ function Register() {
 
   return (
     <div className='Register'>
+       <div className="movie-logo">
+       <img src={logo} alt="Logo" />
+      </div>
       <div className='main-container'>
       
         <form>
@@ -227,7 +236,7 @@ function Register() {
             {errorMessage && <p className='error-message'>{errorMessage}</p>}
 
             {/* Submit button */}
-            <div className='submit-container'>
+            <div className='submit-reg-container'>
               <button
                 type='button'
                 disabled={status === 'loading'}

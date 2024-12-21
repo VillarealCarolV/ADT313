@@ -1,6 +1,8 @@
 .App {
-  background-color: #282c34;
+  background: url(./img/background.jpg)no-repeat;
   color: white;
+  background-size: cover;
+  background-position: center;
 }
 
 .App-logo {

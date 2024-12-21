@@ -3,6 +3,7 @@ import './Login.css';
 import { useNavigate } from 'react-router-dom';
 import { useDebounce } from '../../../utils/hooks/useDebounce';
 import axios from 'axios';
+import logo from '../../../img/logo-movie.png';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -33,7 +34,7 @@ function Login() {
   const handleLogin = async () => {
     const data = { email, password };
     setStatus('loading');
-    setErrorMessage(''); // Clear previous error
+    setErrorMessage(''); 
     try {
       const res = await axios.post('http://localhost:3000/user/login', data, {
         headers: { 'Access-Control-Allow-Origin': '*' },
@@ -41,8 +42,12 @@ function Login() {
       localStorage.setItem('accessToken', res.data.access_token);
       navigate('/main/home');
       setStatus('idle');
-    } catch (e) {
-      setErrorMessage('Incorrect email or password. Please try again.');
+    } catch (e)  {
+      if (e.response && e.response.status === 401) {
+        setErrorMessage('Incorrect Email or Password. Please try again.');
+      } else {
+        setErrorMessage('An error occurred. Please try again later.');
+      }
       setStatus('idle');
     }
   };
@@ -53,16 +58,22 @@ function Login() {
   }, [userInputDebounce]);
 
   return (
+    
     <div className='Login'>
+      <div className="movie-logo">
+       <img src={logo} alt="Logo" />
+      </div>
       <div className='main-container'>
         <form>
           <div className='form-container'>
             <h3>Login</h3>
 
-            {error && <span className='login errors'>{error}</span>}
+            
+            {errorMessage && <span className='login errors'>{errorMessage}</span>}
             <div>
               <div className='form-group'>
                 <label>E-mail:</label>
+                <div className="input-box">
                 <input
                   type='text'
                   name='email'
@@ -70,6 +81,9 @@ function Login() {
                   value={email}
                   onChange={(e) => handleOnChange(e, 'email')}
                 />
+
+                </div>
+                
               </div>
               {debounceState && isFieldsDirty && email == '' && (
                 <span className='errors'>This field is required</span>
@@ -78,6 +92,7 @@ function Login() {
             <div>
               <div className='form-group'>
                 <label>Password:</label>
+                <div className="input-box">
                 <input
                   type={isShowPassword ? 'text' : 'password'}
                   name='password'
@@ -85,6 +100,8 @@ function Login() {
                   value={password}
                   onChange={(e) => handleOnChange(e, 'password')}
                 />
+                </div>
+               
               </div>
               {debounceState && isFieldsDirty && password == '' && (
                 <span className='errors'>This field is required</span>
@@ -119,7 +136,7 @@ function Login() {
                 {status === 'idle' ? 'Login' : 'Loading'}
               </button>
             </div>
-            <div className='reg`ister-container'>
+            <div className='register-container'>
               <a href='/register'>
                 <small>Register</small>
               </a>
@@ -133,5 +150,5 @@ function Login() {
 
 export default Login;
 
-//usermail@mail.com
-//userpass
+//carolvillareal@mail.com
+//carol22

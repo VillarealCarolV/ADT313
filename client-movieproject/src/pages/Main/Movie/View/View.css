@@ -1,0 +1,11 @@
+.photo-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Space between photos */
+  }
+  
+  .photo-gallery img {
+    max-width: 100%; /* Responsive images */
+    height: auto;
+    border-radius: 5px; /* Optional styling */
+  }

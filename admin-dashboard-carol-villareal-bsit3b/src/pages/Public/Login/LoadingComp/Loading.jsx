@@ -1,5 +1,5 @@
 import './Loading.css'
-import imageTitle from '../../img/movielogo.png';
+import imageTitle from '../../img/logo-movie.png';
 
 function Loading() {
     return (
